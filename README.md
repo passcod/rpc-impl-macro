@@ -4,12 +4,16 @@ An alternate macro for paritytech/jsonrpc services, which creates the service
 as an `impl` on an item instead of as a separate trait, reducing repetition in
 the common case.
 
+This is extracted from some of my own projects which are still in development,
+and may break carelessly for the moment. PRs accepted still, though.
+
 ## Install
 
 Currently not published on crates.io.
 
 ```toml
-rpc-impl-macro = { git = "https://github.com/passcod/rpc-impl-macro" }
+rpc-impl-macro = { git = "https://github.com/passcod/rpc-impl-macro", tag = "v0.1.0" }
+rpc-macro-support = { git = "https://github.com/passcod/rpc-impl-macro", tag = "v0.1.0" }
 ```
 
 ## Use
