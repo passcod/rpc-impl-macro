@@ -1,0 +1,18 @@
+[package]
+name = "rpc-macro-support"
+version = "0.1.0"
+description = "Supporting code for rpc-macro"
+authors = ["Félix Saparelli <felix@passcod.name>"]
+license = "Artistic-2.0"
+repository = "https://github.com/passcod/rpc-impl-macro"
+edition = "2018"
+
+[badges]
+travis-ci = { repository = "passcod/rpc-impl-macro" }
+maintenance = { status = "actively-developed" }
+
+[dependencies]
+jsonrpc-core = { git = "https://github.com/paritytech/jsonrpc" }
+log = "0.4.6"
+serde = "1.0.84"
+serde_json = "1.0.34"
