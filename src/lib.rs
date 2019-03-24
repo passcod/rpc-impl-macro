@@ -129,7 +129,7 @@ pub fn rpc_impl_struct(input: pm1::TokenStream) -> pm1::TokenStream {
                 match ::rpc_macro_support::parse_params(params) {
                     Ok(p) => p,
                     Err(err) => {
-                        ::log::error!("wrong parameter types for notification, skip");
+                        ::log::error!("wrong parameter types for notification (rpc: {}), skip", #name);
                         return;
                     }
                 }
@@ -144,7 +144,7 @@ pub fn rpc_impl_struct(input: pm1::TokenStream) -> pm1::TokenStream {
             quote_spanned! {method.span()=>
                 ::log::debug!("receiving for typed {} {} (rpc: {}): no params", #kind, #funnames, #name);
                 let fun = #fundef;
-                ::log::info!("handling typed {} {} (rpc: {})", #kind, #funnames, #name);
+                ::log::debug!("handling typed {} {} (rpc: {})", #kind, #funnames, #name);
                 fun(base)
             }
         } else if types.len() == 1 {
@@ -153,7 +153,7 @@ pub fn rpc_impl_struct(input: pm1::TokenStream) -> pm1::TokenStream {
                 ::log::debug!("receiving for typed {} {} (rpc: {}): parsing params to ({})", #kind, #funnames, #name, stringify!(#(#typdsc),*));
                 let arg: #(#types),* = #param_parser;
                 let fun = #fundef;
-                ::log::info!("handling typed {} {} (rpc: {})", #kind, #funnames, #name);
+                ::log::debug!("handling typed {} {} (rpc: {})", #kind, #funnames, #name);
                 fun(base, arg)
             }
         } else {
@@ -162,7 +162,7 @@ pub fn rpc_impl_struct(input: pm1::TokenStream) -> pm1::TokenStream {
                 ::log::debug!("receiving for typed {} {} (rpc: {}): parsing params to ({})", #kind, #funnames, #name, stringify!(#(#typdsc),*));
                 let args: (#(#types),*) = #param_parser;
                 let fun = #fundef;
-                ::log::info!("handling typed {} {} (rpc: {})", #kind, #funnames, #name);
+                ::log::debug!("handling typed {} {} (rpc: {})", #kind, #funnames, #name);
                 fun(base, #(#args),*)
             }
         };
